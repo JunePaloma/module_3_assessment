@@ -8,11 +8,10 @@ class SearchController < ApplicationController
   response =
   @conn.get("/v1/stores(area(80202,25))?format=json&show=storeId,storeType,longName,phone,distance,city&apiKey=#{ENV["API_KEY"]}")
 
-binding.pry
+  @raw_stores = JSON.parse(response.body, symbolize_names: true)[:stores]
 
-
-
-    @stores_raw = JSON.parse(response.body, symbolize_names: true)[:stores]
-
+  @stores = @raw_stores.map do |raw_store|
+    Store.new(raw_store)
+    end
   end
 end
