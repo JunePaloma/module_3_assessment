@@ -8,8 +8,8 @@ describe "As a user I can search by valid zipcode" do
 
     expect(current_path).to eq("/search")
 
-    expect(page).to have_content("17 Total Stores")
-    expect(page).to have_css('.store', count:17)
+    # expect(page).to have_content("17 Total Stores")
+    expect(page).to have_css('.store', count:10)
     # come back to this to deal with pagenation - change test to display only 10 results at a time.
 
     within(first('.store')) do
