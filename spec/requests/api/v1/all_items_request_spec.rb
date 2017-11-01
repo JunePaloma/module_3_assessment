@@ -8,5 +8,6 @@ describe "Items API" do
 
     expect(response).to be_success
     expect(items.count).to eq(2)
+    #need to check that the serializer omits the created_at and updated_at
   end
 end
